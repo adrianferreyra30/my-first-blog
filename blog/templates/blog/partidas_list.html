@@ -3,24 +3,23 @@
 <html>
     <head>
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <title>Django Girls blog</title>
+        <title>Partidas Epicas</title>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
         <div class="page-header">
-            <h1><a href="/">Django Girls Blog</a></h1>
+            <h1><a href="/">Partidas Epicas</a></h1>
         </div>
-        
         {% block content %}
-            {% for post in posts %}
+            {% for partida in partidas %}
                 <div class="post">
-                    <div class="date">
-                        {{ post.published_date }}
-                    </div>
-                    <h2><a href="{% url 'blog:post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                    <p>{{ post.text|linebreaksbr }}</p>
+                    <h2>{{ partida.juego }}</h2>
+                    <p>Duracion: {{ partida.duracion }}</p>
+                    <p>Puntuacion: {{ partida.puntos }}</p>
+                    <h3>Jugada por {{ partida.jugador }}</h3>
+                    <button type="button" value="delete" class="save btn btn-danger" (click)="">delete</button>
                 </div>
             {% endfor %}
         {% endblock %}

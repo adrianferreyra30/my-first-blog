@@ -17,4 +17,14 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+class Partida(models.Model):
+    jugador = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    juego = models.CharField(max_length=100)
+    duracion = models.IntegerField(null = True)
+    puntos = models.IntegerField(null = True)
 
+    def saved(self):
+        self.save()
+
+    def __str__(self):
+        return self.juego
